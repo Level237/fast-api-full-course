@@ -3,7 +3,9 @@ from src.books.routes import book_router
 
 version = "v1"
 app= FastAPI(
+    title="Bookly",
+    description="A Rest Api for a book review web services",
     version=version
 )
 
-app.include_router(book_router,prefix=f"/api/{version}/book",tags=["books"])
+app.include_router(book_router,prefix=f"/api/{version}/books",tags=["books"])
