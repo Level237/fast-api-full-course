@@ -1,13 +1,13 @@
-from sqlalchemy import SQLModel,Field,Column
+from sqlmodel import SQLModel,Field,Column
 from sqlalchemy.dialects.postgresql import UUID as pgUUID
 import uuid
-import datetime
-
+from datetime import datetime
+import sqlalchemy.dialects.postgresql as pg
   
 class User(SQLModel,table=True):
     
     __tablename__ = "users"
-    
+
     uid:uuid.UUID = Field(
         sa_column=Column(
             pgUUID(as_uuid=True),
