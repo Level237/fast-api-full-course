@@ -11,9 +11,10 @@ class Book(SQLModel,table=True):
     uid: uuid.UUID = Field(
         sa_column=Column(
             pg.UUID(as_uuid=True),
+            nullable=False,
             primary_key=True,
             default=uuid.uuid4,
-            nullable=False,
+            
         )
     )
     title: str
@@ -22,8 +23,8 @@ class Book(SQLModel,table=True):
     publisher_date: str
     page_count: int
     language: str
-    created_at: datetime=Field(sa_column=Column(pg.TIMESTAMP  ,default=datetime.now()))
-    updated_at: datetime=Field(sa_column=Column(pg.TIMESTAMP  ,default=datetime.now()))
+    created_at: datetime=Field(sa_column=Column(pg.TIMESTAMP,default=datetime.now()))
+    updated_at: datetime=Field(sa_column=Column(pg.TIMESTAMP,default=datetime.now()))
     
     def __repr__(self):
         return f"<Book {self.title}>"
