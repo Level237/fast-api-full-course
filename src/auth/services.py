@@ -6,7 +6,7 @@ from .utils import generate_password_hash
 
 
 class UserService():
-    async def get_user_by_email(email:str,session:AsyncSession):
+    async def get_user_by_email(self,email:str,session:AsyncSession):
         statement = select(User).where(User.email == email)
         
         result = await session.exec(statement)
@@ -15,8 +15,8 @@ class UserService():
         return user
     
     
-    async  def user_exists(self,email,session:AsyncSession):
-        user = await self.get_user_by_email(email=email,session=session)
+    async  def user_exists(self,email:str,session:AsyncSession):
+        user = await self.get_user_by_email(email,session)
        
         return True if user is not None else False
     
